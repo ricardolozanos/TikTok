@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+*{
+    outline: red dotted 0px;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #FFA500; /* Orangeish background color */
+    z-index: -1;
+}
+
+#background img {
+    position: absolute;
+    width: 100px; /* Adjust the width as desired */
+    opacity: 0.8; /* Adjust the opacity as desired */
+    animation: moveRotate linear infinite;
+}
+
+
+
+
+@keyframes moveRotate {
+    from {
+        transform: translate(-1600px, -300px) rotate(0deg);
+    }
+    to {
+        transform: translate(100vw, 100vh) rotate(360deg);
+    }
+}
