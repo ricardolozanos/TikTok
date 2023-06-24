@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stars falling</title>
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #111;
+    }
+
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    /* Sky background */
+    #sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #002346, #005b96);
+      z-index: -1;
+    }
+
+    /* Droplet animation */
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div id="background">
+    <div id="sky"></div>
+  </div>
+
+  <script>
+    let resizeTimer;
+
+    function generateDroplets() {
+      // Clear existing droplets
+      const droplets = document.getElementsByClassName('star');
+      while (droplets.length > 0) {
+        droplets[0].parentNode.removeChild(droplets[0]);
+      }
+
+      // Generate new droplets
+      const dropletDensity = 0.00003; // Adjust density as needed
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const screenArea = screenWidth * screenHeight;
+      const dropletCount = Math.floor(screenArea * dropletDensity);
+
+      for (let i = 0; i < dropletCount; i++) {
+        const droplet = document.createElement('div');
+        droplet.className = 'star';
+        droplet.style.left = Math.random() * screenWidth + 'px';
+        droplet.style.top = Math.random() * screenHeight + 'px';
+        document.getElementById('background').appendChild(droplet);
+      }
+    }
+
+    function animateDroplets() {
+      const droplets = document.getElementsByClassName('star');
+
+      for (let i = 0; i < droplets.length; i++) {
+        const droplet = droplets[i];
+        droplet.style.top = (droplet.offsetTop + 1) + 'px';
+
+        if (droplet.offsetTop > window.innerHeight) {
+          droplet.style.top = '-4px';
+        }
+      }
+
+      requestAnimationFrame(animateDroplets);
+    }
+
+    function delayedRefresh() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        generateDroplets();
+      }, 250);
+    }
+
+    // Generate droplets on initial load
+    generateDroplets();
+
+    // Animate droplets
+    animateDroplets();
+
+    // Refresh droplets after window resize
+    window.addEventListener('resize', delayedRefresh);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: rgba(255, 0, 0, 0) 1px dotted;
+  }
+  
+  body {
+    overflow: hidden;
+  }
+  
+  .container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0088cc;
+  }
+  
+  
+  .circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @keyframes expand-animation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(10);
+      opacity: 0;
+    }
+  }
+  
+  .circle {
+    position: absolute;
+    background-color: #0088cc60;
+    border: 2px solid #defbff;
+    border-radius: 50%;
+    animation: expand-animation 1s linear;
+  }
+  
+  
