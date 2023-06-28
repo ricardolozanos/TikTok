@@ -1,0 +1,112 @@
+body {
+    background: rgb(0, 212, 255);
+    background: linear-gradient(45deg, rgba(0, 212, 255, 1) 0%, rgba(11, 3, 45, 1) 100%);
+    background-image: url("pic/background.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .card {
+    margin: 20px;
+  }
+  
+  .container {
+    position: relative;
+    height: 400px;
+    width: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Add opacity to the overlay */
+    transition: clip-path 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); /* Initial overlay shape (rectangle) */
+  }
+  
+  .container .overlay {
+    opacity: 1;
+    transition: opacity 1s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .container .overlay h2 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+  }
+
+  .container .overlay p {
+    font-size: 24px;
+    margin-bottom: 0;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+  }
+  
+  .container:hover .overlay {
+    opacity: 0;
+    animation: cross-disappear 1s linear forwards;
+  }
+  
+  .container .overlay h2 {
+    margin-bottom: 10px;
+    transition: opacity 0.5s linear;
+  }
+  
+  .container:hover .overlay h2 {
+    opacity: 0;
+  }
+  
+  @keyframes cross-disappear {
+    0% {
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    25% {
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    50% {
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    75% {
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    100% {
+        clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 0%);
+    }
+  }
+  
+  
+  
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  
+  .container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
